@@ -3,6 +3,27 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script>
+      function initFingerprintJS() {
+        FingerprintJS.load().then(fp => {
+          // The FingerprintJS agent is ready.
+          // Get a visitor identifier when you'd like to.
+          fp.get().then(result => {
+            // This is the visitor identifier:
+            console.log(result);
+            const visitorId = result.visitorId;
+            console.log(visitorId);
+          });
+        });
+      }
+    </script>
+    <script
+      async
+      src="//cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"
+      onload="initFingerprintJS()"
+    ></script>
+
   </head>
   <body>
     <h1><%= title %></h1>
