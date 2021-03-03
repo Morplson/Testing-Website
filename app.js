@@ -8,7 +8,7 @@ var Fingerprint = require('express-fingerprint')
 
 
 var webRouter = require('./web/routes/router');
-//var apiRouter = require('./api/routes/router');
+var apiRouter = require('./api/routes/router');
 
 var app = express();
 
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'web/public')));
 app.use(Fingerprint())
 
 app.use('/', webRouter);
-//app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

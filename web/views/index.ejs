@@ -12,7 +12,18 @@
           fp.get().then(result => {
             // This is the visitor identifier:
             console.log(result);
-            const visitorId = result.visitorId;
+            let visitorId = result.visitorId;
+
+            fetch("/api/fpr", {
+              method: "POST",
+              body: JSON.stringify({ 
+                visitorId: visitorId
+              }),
+              headers: { 
+                "Content-type": "application/json; charset=UTF-8"
+              } 
+            }).then(response => response.json()).then(json => console.log(json)); 
+
             alert(visitorId);
           });
         });
